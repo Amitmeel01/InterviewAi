@@ -9,7 +9,7 @@ import {
   } from "@/components/ui/collapsible";
 import { ChevronsUpDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import feedbackHandler from '@/app/api/feedback/route';
+import feedbackHandler from '@/app/feedback/page';
 
 function Feedback({ params: { interviewId } }: any) {
     console.log(interviewId);
