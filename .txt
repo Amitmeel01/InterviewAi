@@ -24,3 +24,14 @@ speech ko text m convert ke liye we use "npm i react-hook-speech-to-text"
 
 
 i am changing handler function , means export default to direct export so , i any probloem then rewrite again handler in route.ts
+
+
+
+
+
+
+
+error:-
+
+
+handler function is not a valid export for a Next.js page. In Next.js, a page component should be a React component. The code for fetching data from the server should typically be done either using API routes or within the server-side rendering (SSR) methods.
