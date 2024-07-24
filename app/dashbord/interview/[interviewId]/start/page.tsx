@@ -1,12 +1,11 @@
 "use client";
 
-import { handler } from "@/app/interview/[interviewId]/page";
-import Question from "@/components/shared/Question";
-import RecordAnswer from "@/components/shared/RecordAnswer";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
+import Question from "@/components/shared/Question";
+import RecordAnswer from "@/components/shared/RecordAnswer";
 
 type StartInterviewProps = {
   params: { interviewId: string };
@@ -20,12 +19,13 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params: { interviewId }
 
   const getData = useCallback(async () => {
     try {
-      const result = await handler(interviewId);
-      console.log("Handler result:", result);
-      if (result && result.interview && result.interview.length > 0) {
-        const interviewData = JSON.parse(result.interview[0].jsonMockRes);
+      const response = await fetch(`/api/interview/${interviewId}/page`);
+      const result = await response.json();
+
+      if (response.ok && result) {
+        const interviewData = JSON.parse(result.jsonMockRes);
         setMockInterviewQuestion(interviewData);
-        setInterviewData(result.interview[0]);
+        setInterviewData(result);
       } else {
         console.log("Interview not found");
       }
@@ -51,12 +51,12 @@ const StartInterview: React.FC<StartInterviewProps> = ({ params: { interviewId }
             Prev Question
           </Button>
         )}
-        {activeQuestion < Number(process.env.NEXT_PUBLIC_INTERVIEW_QUESTION) - 1 && (
+        {activeQuestion < (mockInterviewQuestion?.length || 0) - 1 && (
           <Button className="bg-blue-600" onClick={() => setActiveQuestion(activeQuestion + 1)}>
             Next Question
           </Button>
         )}
-        {activeQuestion === mockInterviewQuestion?.length - 1 && (
+        {activeQuestion === (mockInterviewQuestion?.length || 0) - 1 && (
           <Link href={`/dashbord/interview/${interviewData?.mockId}/feedback`}>
             <Button className="bg-blue-600">End Interview</Button>
           </Link>
