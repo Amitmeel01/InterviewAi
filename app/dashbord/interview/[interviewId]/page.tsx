@@ -1,6 +1,5 @@
 "use client";
 
-import { handler } from "@/app/interview/[interviewId]/page";
 import { Button } from "@/components/ui/button";
 import { Ghost, WebcamIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -15,12 +14,11 @@ function InterviewId({ params: { interviewId } }: any) {
 
   const getData = useCallback(async () => {
     try {
-      const result = await handler(interviewId);
-      console.log("Handler result:", result);
-      if (result && result.interview && result.interview.length > 0) {
-        const interviewData = result.interview[0]; // Access the first item in the array
-        console.log("Interview Data:", interviewData);
-        setInterview(interviewData);
+      const response = await fetch(`/api/interview/${interviewId}/page`);
+      const result = await response.json();
+
+      if (response.ok && result) {
+        setInterview(result);
       } else {
         console.log("Interview not found");
       }
@@ -32,8 +30,6 @@ function InterviewId({ params: { interviewId } }: any) {
   useEffect(() => {
     getData();
   }, [interviewId, getData]);
-
- 
 
   return (
     <>
