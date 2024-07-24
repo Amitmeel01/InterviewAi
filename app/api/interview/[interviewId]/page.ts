@@ -1,4 +1,3 @@
-// pages/api/interviews/[interviewId].ts
 import type { NextApiRequest, NextApiResponse } from 'next';
 import connectDb from '@/lib/db';
 import interviewModel from '@/lib/modals/interview.modal';
