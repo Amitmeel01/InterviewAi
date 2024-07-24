@@ -1,0 +1,26 @@
+we use here postgresql , and for postgrelsql using Drizzle ORM to convert queries postgresql to simple way orm(objective relational mapping) its like prisma
+
+
+app----->drizzle ORM ----->postgresql (request)
+...<-----...........<--------..........(response)
+
+
+
+It’s the only ORM with both relational and SQL-like query APIs, providing you best of both worlds when it comes to accessing your relational data. Drizzle is lightweight, performant, typesafe, non lactose, gluten-free, sober, flexible and serverless-ready by design. Drizzle is not just a library, it’s an experience
+
+
+for client side we use NEXT_PUBLIC , in env.local
+
+if we use mongodb methods in "client side " then we get findById , find etc mongoose function not defined, because that all are "server functions"
+
+
+here we use react webcam for camera
+
+
+speech ko text m convert ke liye we use "npm i react-hook-speech-to-text"
+
+
+
+
+
+i am changing handler function , means export default to direct export so , i any probloem then rewrite again handler in route.ts
