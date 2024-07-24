@@ -1,6 +1,6 @@
 "use client";
 
-import { handler } from "@/app/interview/[interviewId]/route";
+import { handler } from "@/app/interview/[interviewId]/page";
 import Question from "@/components/shared/Question";
 import RecordAnswer from "@/components/shared/RecordAnswer";
 import { Button } from "@/components/ui/button";

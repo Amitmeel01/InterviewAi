@@ -1,6 +1,6 @@
 "use client";
 
-import { handler } from "@/app/interview/[interviewId]/route";
+import { handler } from "@/app/interview/[interviewId]/page";
 import { Button } from "@/components/ui/button";
 import { Ghost, WebcamIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
