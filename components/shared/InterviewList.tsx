@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { AllInterviewList } from '@/app/interview/[interviewId]/route';
+import { AllInterviewList } from '@/app/interview/[interviewId]/page';
 import { useUser } from '@clerk/nextjs';
 import InterviewCard from './InterviewCard';
 
